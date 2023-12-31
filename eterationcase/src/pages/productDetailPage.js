@@ -76,11 +76,30 @@ class ProductDetailPage extends Component {
     };
 
 
-    handleAddToCart = (product) => {
-        this.props.handleAddToCart(product);
+    handleAddToCart = (product,event) => {
+        const productPrice = parseFloat(product.price);
+        const existingItem = this.state.cartItems.find((item) => item.id === product.id);
 
+        if (existingItem) {
+            const updatedCart = this.state.cartItems.map((item) =>
+                item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+            );
+
+            this.setState((prevState) => ({
+                cartItems: updatedCart,
+                totalPrice: prevState.totalPrice + productPrice,
+                selectedProducts: [...prevState.selectedProducts, { ...product, quantity: existingItem.quantity + 1 }],
+            }));
+        } else {
+            this.setState((prevState) => ({
+                cartItems: [...prevState.cartItems, { ...product, quantity: 1 }],
+                totalPrice: prevState.totalPrice + productPrice,
+                selectedProducts: [...prevState.selectedProducts, { ...product, quantity: 1 }],
+            }));
+        }
 
     };
+
 
 
     render() {
