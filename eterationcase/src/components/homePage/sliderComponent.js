@@ -23,7 +23,6 @@ class SliderComponent extends Component {
             this.itemWidth = currentWidth;
 
         }
-        console.log(this.itemWidth,"sadoasjjsad")
     }
 
     updateButtonState = () => {

@@ -29,7 +29,6 @@ class ProductDetailPage extends Component {
             const products = response.data;
             this.setState({ products });
 
-            // Bu kısmı ekleyerek pathname içindeki ID'ye uygun ürünü seçebilirsiniz
             const { pathname } = this.props.location;
             const productId = pathname.substring(pathname.lastIndexOf('/') + 1);
             const selectedProduct = products.find(product => product.id === productId);
@@ -69,15 +68,13 @@ class ProductDetailPage extends Component {
     };
 
     componentDidUpdate() {
-        this.saveCartState(); // Component güncellendiğinde sepet durumunu localStorage'a kaydet
+        this.saveCartState();
     }
 
-    // Sepet durumunu localStorage'a kaydet
     saveCartState = () => {
         localStorage.setItem('cartState', JSON.stringify(this.state));
     };
 
-    // Sepet durumunu localStorage'dan geri yükle
 
     handleAddToCart = (product) => {
         this.props.handleAddToCart(product);
@@ -88,7 +85,6 @@ class ProductDetailPage extends Component {
 
     render() {
        let{selectedProduct}=this.state
-        console.log("state-----------------",this.state)
         return (
             <div>
                 <HeaderComponent totalPrice={this.state.totalPrice}/>

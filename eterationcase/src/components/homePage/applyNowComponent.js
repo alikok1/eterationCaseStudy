@@ -61,7 +61,6 @@ class ApplyNowComponent extends Component {
 
     render() {
         let { name, email, error } = this.state;
-        console.log(name,email,"saosojasado")
         return (
             <div>
                 <div className="lb-root">

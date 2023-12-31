@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Switch, Route, Routes,} from "react-router-dom";
+import {Route, Routes,} from "react-router-dom";
 import * as ROUTES from "../constants/routePaths";
 import HomePage from "../pages/homePage";
 import ProductDetailPage from "../pages/productDetailPage";

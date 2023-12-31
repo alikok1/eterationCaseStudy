@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import {logDOM} from "@testing-library/react";
+
 
 
 class ProductListContainer extends Component {
@@ -128,7 +128,7 @@ class ProductListContainer extends Component {
         }
     };
 
-// ...
+
 
 
 
@@ -167,11 +167,11 @@ class ProductListContainer extends Component {
 
     render() {
 
-        let{products,selectedProduct,searchTerm}=this.props
+        let{selectedProduct,searchTerm}=this.props
 
-        const { currentPage, productsPerPage, searchBrand,searchModel, selectedBrands,selectedModels,sortOption, priceSort } = this.state;
+        const { currentPage, productsPerPage, searchBrand,searchModel,sortOption, priceSort } = this.state;
         if (!selectedProduct) {
-            selectedProduct = []; // Varsayılan değer, boş bir dizi olarak belirlenebilir.
+            selectedProduct = [];
         }
         let  brands=this.filterBrands()
         let models=this.filterModels()
@@ -182,25 +182,18 @@ class ProductListContainer extends Component {
             brand.toLowerCase().includes(searchModel.toLowerCase())
         );
 
-        let sortedProducts = [...products];
 
 
         const indexOfLastProduct = currentPage * productsPerPage;
         const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-        if (searchTerm.length > 0) {
-            sortedProducts = sortedProducts.filter((product) =>
-                (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
-                (product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    product.brand.toLowerCase() === searchTerm.toLowerCase())
-            );
-        }
+
         if(searchBrand.length>0){
 
         }
        // const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
 
-        const filteredProducts = this.filterProductsByBrandAndModel(); // Tüm ürün listesini filtrele
+        const filteredProducts = this.filterProductsByBrandAndModel();
         const searchedProducts = filteredProducts.filter((product) =>
             (product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 product.brand.toLowerCase() === searchTerm.toLowerCase())
@@ -215,7 +208,7 @@ class ProductListContainer extends Component {
         } else if (priceSort === 'highToLow') {
             searchedProducts.sort((a, b) => b.price - a.price);
         }
-        const currentProducts = searchedProducts.slice(indexOfFirstProduct, indexOfLastProduct); // Sayfadaki ürünleri seç
+        const currentProducts = searchedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
         const totalPages = Math.ceil(searchedProducts.length / productsPerPage);
 
 

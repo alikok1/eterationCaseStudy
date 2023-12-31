@@ -12,7 +12,7 @@ class HeaderComponent extends Component {
     headerSearchChange = (event) => {
         const term = event.target.value;
         this.setState({ searchTerm: term });
-        this.props.onSearchChange(term); // Notify the parent about the search term change
+        this.props.onSearchChange(term);
     };
 
 

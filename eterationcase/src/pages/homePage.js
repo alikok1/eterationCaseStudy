@@ -35,15 +35,13 @@ class HomePage extends Component {
         }
     };
     componentDidUpdate() {
-        this.saveCartState(); // Component güncellendiğinde sepet durumunu localStorage'a kaydet
+        this.saveCartState();
     }
 
-    // Sepet durumunu localStorage'a kaydet
     saveCartState = () => {
         localStorage.setItem('cartState', JSON.stringify(this.state));
     };
 
-    // Sepet durumunu localStorage'dan geri yükle
     restoreCartState = () => {
         const savedCartState = localStorage.getItem('cartState');
         if (savedCartState) {

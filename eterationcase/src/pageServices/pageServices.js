@@ -1,4 +1,3 @@
-// import * as actionTypes from "../constants/actionTypes";
 import * as ROUTES from '../constants/routePaths';
 import {
     getSliderItemsDataInit
@@ -15,7 +14,6 @@ export default class PageService {
 
     getData = (dispatch) =>{
         return new Promise((resolve,reject)=>{
-            //TODO : layout data çekildiyse tekrar çekilmeyecek!
                     switch (this.currentPage) {
                         case ROUTES.HOME_PAGE:
                             getSliderItemsDataInit(dispatch)
