@@ -1,0 +1,1 @@
+export const SLIDER_ITEMS = "SLIDER_ITEMS";
