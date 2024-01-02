@@ -29,6 +29,7 @@ class ApplyNowComponent extends Component {
         });
     };
 
+
     handleSubmit =  async (e) => {
         e.preventDefault();
 
