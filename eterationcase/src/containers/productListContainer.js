@@ -33,6 +33,10 @@ class ProductListContainer extends Component {
         if (this.state.isOpenMenu === false) {
             document.body.classList.add("no-scroll");
         }
+        let bodyElement=document.body;
+        if (bodyElement.classList.contains("no-scroll") && this.state.isOpenMenu === true) {
+            bodyElement.classList.remove("no-scroll");
+        }
         else{
           //  document.body.classList.remove("no-scroll");
         }

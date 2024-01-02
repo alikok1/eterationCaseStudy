@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 
 
 class ProductDetailContainer extends Component {
+
+    handleAddToCart = (product) => {
+        this.props.handleAddToCart(product); // Ebeveyn bileşenden gelen handleAddToCart fonksiyonunu çağır
+    }
     render() {
         let {selectedProduct,selectedDetailProduct}=this.props
         return (
@@ -15,7 +19,7 @@ class ProductDetailContainer extends Component {
                         <div className="info-block">
                             <div className="name">{selectedProduct.name}</div>
                             <div className="price">{selectedProduct.price}</div>
-                            <div className="btn-item" >Add to Cart</div>
+                            <div className="btn-item" onClick={()=>this.handleAddToCart(selectedProduct)} >Add to Cart</div>
 
                             <p>
                                 {
